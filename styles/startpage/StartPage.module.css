@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Ovo&display=swap");
+.mainContainer {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 1fr 5rem;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "content"
+    "footer";
+
+  background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(5rem, 1fr));
+  grid-template-rows: repeat(12, minmax(5rem, 6rem));
+  grid-area: content;
+}
+
+.imgContainer {
+  overflow: hidden;
+  grid-column: 1/-1;
+  grid-row: 1/6;
+  background: linear-gradient(20deg, #09203f 30%, rgba(0, 0, 0, 0.1)),
+    url("https://images.unsplash.com/photo-1577560315454-2ee1bebdc8a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-position: center;
+}
+.cardContainer {
+  grid-column: 3/ 11;
+  grid-row: 5/10;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  justify-items: center;
+  grid-row-gap: 1rem;
+}
+.icon {
+  vertical-align: -0.2rem;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+.logo {
+  height: 1.5rem;
+}
+
+.textContainer {
+  grid-row: 2/4;
+  grid-column: 2/10;
+  color: white;
+}
+.headerText {
+  font-family: "Ovo", serif;
+  font-size: 2.5rem;
+}
+.subText {
+  margin-bottom: 1rem;
+}
+.btn {
+  border: 1px solid rgb(38, 204, 216);
+  border-radius: 10px;
+  height: 2.5rem;
+  width: 8rem;
+  background: rgba(155, 222, 224, 0);
+  color: rgb(38, 204, 216);
+  transition: 0.5s;
+  font-size: 1rem;
+}
+.btn:hover {
+  background: rgba(155, 222, 224, 0.233);
+  cursor: pointer;
+}
+.footer {
+  grid-area: footer;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(128, 175, 219);
+}
+@media screen and (max-width: 1930px) {
+  .cardContainer {
+    grid-column: 2/ 12;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    grid-template-columns: repeat(12, minmax(0rem, 1fr));
+    grid-template-rows: repeat(12, minmax(5rem, 10rem));
+  }
+  .cardContainer {
+    grid-column: 1/ -1;
+    grid-row: 5/10;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-row-gap: 1rem;
+    margin-top: -17rem;
+  }
+  .imgContainer {
+    grid-row: 1/3;
+    height: 22rem;
+  }
+  .mainContainer {
+    grid-template-columns: 100vw;
+  }
+}

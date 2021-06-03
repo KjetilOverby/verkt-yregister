@@ -1,0 +1,33 @@
+.container {
+  width: 25rem;
+  height: auto;
+
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+}
+.title {
+  font-weight: 200;
+}
+.typeCountContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.pTag {
+  margin: 0.2rem 0;
+}
+.hr {
+  color: rgb(82, 82, 82);
+  border: none;
+  border-bottom: 1px solid;
+}
+@media screen and (max-width: 1500px) {
+  .container {
+    width: 20rem;
+  }
+}
+@media screen and (max-width: 630px) {
+  .container {
+    width: 95vw;
+  }
+}
