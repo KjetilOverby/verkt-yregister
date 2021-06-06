@@ -17,7 +17,7 @@ function StartPageCards({
           {icon}
           {title}
         </h1>
-        <h4>
+        <h4 className={styles.subTitle}>
           Denne måneden (
           {countMonth && countMonth.data.map((item) => item.countMonth)})
         </h4>
@@ -31,7 +31,7 @@ function StartPageCards({
               </div>
             );
           })}
-        <h4>
+        <h4 className={styles.subTitle}>
           Dette året (
           {countYear && countYear.data.map((item) => item.countYear)})
         </h4>

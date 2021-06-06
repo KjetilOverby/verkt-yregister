@@ -16,6 +16,9 @@
 .pTag {
   margin: 0.2rem 0;
 }
+.subTitle {
+  margin-top: 1.5rem;
+}
 .hr {
   color: rgb(82, 82, 82);
   border: none;

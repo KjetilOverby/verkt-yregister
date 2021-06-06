@@ -10,6 +10,7 @@ const HeaderComponent = ({
   setInput,
   setOpenSearchResults,
   openSearchResults,
+  setMoveBackSearchresult,
 }) => {
   const { user, isAuthenticated } = useAuth0();
   const [test, setTest] = useState();
@@ -19,8 +20,12 @@ const HeaderComponent = ({
   };
 
   const closeSearchResultsHandler = () => {
-    setOpenSearchResults(false);
     setInput("");
+    setOpenSearchResults(false);
+    // setMoveBackSearchresult("moveBack");
+    // setTimeout(() => {
+    //   setOpenSearchResults(false);
+    // }, 1500);
   };
   return (
     <div className={styles.header}>

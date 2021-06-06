@@ -30,6 +30,7 @@ function StartPage({
   input,
 }) {
   const { user, isAuthenticated } = useAuth0();
+  const [moveBackSearchresult, setMoveBackSearchresult] = useState();
   return (
     <div className={styles.mainContainer}>
       <div className={styles.container}>
@@ -39,8 +40,14 @@ function StartPage({
           setOpenSearchResults={setOpenSearchResults}
           input={input}
           openSearchResults={openSearchResults}
+          setMoveBackSearchresult={setMoveBackSearchresult}
         />
-        {openSearchResults && <SearchResults searchResult={searchResult} />}
+        {openSearchResults && (
+          <SearchResults
+            searchResult={searchResult}
+            moveBackSearchresult={moveBackSearchresult}
+          />
+        )}
         <div className={styles.textContainer}>
           <h1 className={styles.headerText}>Sagbladregister</h1>
           <p className={styles.subText}>Sliperi Moelven Våler • MKV - VS66</p>
