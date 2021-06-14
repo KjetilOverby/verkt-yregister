@@ -15,6 +15,7 @@ const ModalComponent = ({
   cancel,
   serial,
   btnText2,
+  actionBtn,
 }) => {
   return (
     <>
@@ -26,7 +27,9 @@ const ModalComponent = ({
               {title} <span style={{ color: "orangered" }}>{serial}</span>?
             </h1>
             <p className={styles.description}>{description}</p>
-            <button className="btn1">{btnText2}</button>
+            <button onClick={actionBtn} className="btn1">
+              {btnText2}
+            </button>
             <button onClick={cancel} className="btn2">
               Avbryt
             </button>

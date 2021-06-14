@@ -9,8 +9,16 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { GiRapidshareArrow } from "react-icons/gi";
 import { GiTrashCan } from "react-icons/gi";
 
-const SearchResults = ({ searchResult }) => {
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+const SearchResults = ({
+  searchResult,
+  setGetID,
+  deleteBladeHandler,
+  setOpenDeleteModal,
+  openDeleteModal,
+  setGetType,
+  setGetSerial,
+  setGetNumberOfRetip,
+}) => {
   const [openRetipModal, setOpenRetipModal] = useState(false);
   const [serial, setSerial] = useState();
 
@@ -21,7 +29,11 @@ const SearchResults = ({ searchResult }) => {
           searchResult.data.map((item) => {
             const OpenDeleteModalHandler = () => {
               setSerial(item.serial);
+              setGetID(item._id);
+              setGetType(item.type);
               setOpenDeleteModal(true);
+              setGetSerial(item.serial);
+              setGetNumberOfRetip(item.performer.length);
             };
             const openRetipModalHandler = () => {
               setOpenRetipModal(true);
@@ -129,6 +141,7 @@ const SearchResults = ({ searchResult }) => {
             cancel={() => setOpenDeleteModal(false)}
             serial={serial}
             btnText2="Slett"
+            actionBtn={deleteBladeHandler}
           />
         )}
         {openRetipModal && (

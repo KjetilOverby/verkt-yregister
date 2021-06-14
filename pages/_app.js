@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -11,10 +12,12 @@ const api = axios.create({
 });
 
 function MyApp({ Component, pageProps }) {
+  const [getID, setGetID] = useState();
   const [openSearchResults, setOpenSearchResults] = useState(false);
   const [wasteThisYear, setWasteThisYear] = useState();
   const [wasteCountTypeThisYear, setWasteCountTypeThisYear] = useState();
-  const [wasteCountCurrentMonth, setWasteCountCurrentMonth] = useState();
+  const [update, setUpdate] = useState();
+  // const [wasteCountCurrentMonth, setWasteCountCurrentMonth] = useState();
   const [wasteCountCurrentMonthType, setWasteCountCurrentMonthType] =
     useState();
 
@@ -36,15 +39,17 @@ function MyApp({ Component, pageProps }) {
       console.log(error);
     }
   }, []);
-  useEffect(() => {
-    try {
-      api.get(`/api/wastecount/wastecountCurrentMonth`).then((res) => {
-        setWasteCountCurrentMonth(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     api
+  //       .get(`/api/wastecount/wastecountCurrentMonth?test=test`)
+  //       .then((res) => {
+  //         setWasteCountCurrentMonth(res.data);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
   useEffect(() => {
     try {
       api.get(`/api/wastecount/wasteCountCurrentMonthType`).then((res) => {
@@ -152,7 +157,8 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, [input]);
+  }, [input, update]);
+
   useEffect(() => {
     if (input) {
       setOpenSearchResults(true);
@@ -169,7 +175,7 @@ function MyApp({ Component, pageProps }) {
         {...pageProps}
         wasteCountTypeThisYear={wasteCountTypeThisYear}
         wasteThisYear={wasteThisYear}
-        wasteCountCurrentMonth={wasteCountCurrentMonth}
+        //wasteCountCurrentMonth={wasteCountCurrentMonth}
         wasteCountCurrentMonthType={wasteCountCurrentMonthType}
         servicecountCurrentYear={servicecountCurrentYear}
         servicecountCurrentYearType={servicecountCurrentYearType}
@@ -184,6 +190,10 @@ function MyApp({ Component, pageProps }) {
         openSearchResults={openSearchResults}
         setOpenSearchResults={setOpenSearchResults}
         input={input}
+        setGetID={setGetID}
+        getID={getID}
+        setUpdate={setUpdate}
+        update={update}
       />
     </Auth0Provider>
   );

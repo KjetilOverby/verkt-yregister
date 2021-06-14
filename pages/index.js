@@ -1,12 +1,18 @@
 import Head from "next/head";
-import Image from "next/image";
 import StartPage from "../src/startpage/StartPage";
 import styles from "../styles/Home.module.css";
+import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+import validUsers from "../utils/users";
+const api = axios.create({
+  baseURL: process.env.api,
+});
 
 export default function Home({
   wasteCountTypeThisYear,
   wasteThisYear,
-  wasteCountCurrentMonth,
+  //wasteCountCurrentMonth,
   wasteCountCurrentMonthType,
   servicecountCurrentYear,
   servicecountCurrentYearType,
@@ -21,7 +27,57 @@ export default function Home({
   openSearchResults,
   setOpenSearchResults,
   input,
+  setGetID,
+  getID,
+  setUpdate,
+  update,
 }) {
+  const { user, isAuthenticated } = useAuth0();
+  const [wasteCountCurrentMonth, setWasteCountCurrentMonth] = useState();
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [getType, setGetType] = useState();
+  const [getSerial, setGetSerial] = useState();
+  const [getNumberOfRetip, setGetNumberOfRetip] = useState();
+  useEffect(() => {
+    try {
+      api
+        .get(`/api/wastecount/wastecountCurrentMonth?test=${user.sub}`)
+        .then((res) => {
+          setWasteCountCurrentMonth(res.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [user]);
+
+  // DELETE
+
+  const deleteBladeHandler = () => {
+    try {
+      api
+        .delete(`/api/delete/deleteblade/?del=${getID}&user=${user.sub}`)
+        .then((res) => {});
+    } catch (error) {
+      console.log(error);
+    }
+    createDeletedBladeHandler();
+    setOpenDeleteModal(false);
+    setTimeout(() => {
+      setUpdate(Math.random());
+    }, 1000);
+  };
+
+  const createDeletedBladeHandler = () => {
+    api
+      .post(`/api/delete/createDeletedBlade/?user=${user.sub}`, {
+        type: getType,
+        serial: getSerial,
+        wasteNumberOfRetip: getNumberOfRetip,
+        wasteDate: new Date(),
+      })
+      .then(function (response) {});
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -47,6 +103,14 @@ export default function Home({
         openSearchResults={openSearchResults}
         setOpenSearchResults={setOpenSearchResults}
         input={input}
+        setGetID={setGetID}
+        deleteBladeHandler={deleteBladeHandler}
+        setOpenDeleteModal={setOpenDeleteModal}
+        openDeleteModal={openDeleteModal}
+        createDeletedBladeHandler={createDeletedBladeHandler}
+        setGetType={setGetType}
+        setGetSerial={setGetSerial}
+        setGetNumberOfRetip={setGetNumberOfRetip}
       />
     </div>
   );

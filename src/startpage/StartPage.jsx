@@ -28,6 +28,13 @@ function StartPage({
   openSearchResults,
   setOpenSearchResults,
   input,
+  setGetID,
+  deleteBladeHandler,
+  setOpenDeleteModal,
+  openDeleteModal,
+  setGetType,
+  setGetSerial,
+  setGetNumberOfRetip,
 }) {
   const { user, isAuthenticated } = useAuth0();
   const [moveBackSearchresult, setMoveBackSearchresult] = useState();
@@ -46,6 +53,13 @@ function StartPage({
           <SearchResults
             searchResult={searchResult}
             moveBackSearchresult={moveBackSearchresult}
+            setGetID={setGetID}
+            deleteBladeHandler={deleteBladeHandler}
+            setOpenDeleteModal={setOpenDeleteModal}
+            openDeleteModal={openDeleteModal}
+            setGetType={setGetType}
+            setGetSerial={setGetSerial}
+            setGetNumberOfRetip={setGetNumberOfRetip}
           />
         )}
         <div className={styles.textContainer}>

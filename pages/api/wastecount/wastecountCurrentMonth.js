@@ -10,22 +10,26 @@ export default async (req, res) => {
   const { method } = req;
   switch (method) {
     case "GET":
-      try {
-        const waste = await Waste.aggregate([
-          {
-            $match: {
-              wasteDate: {
-                $gte: new Date(`${currentYear}-${currentMonth}-01`),
-                $lte: new Date(`${currentYear}-${currentMonth}-31`),
+      if (req.query.test === "auth0|5f27b78668033f003d618d38") {
+        try {
+          const waste = await Waste.aggregate([
+            {
+              $match: {
+                wasteDate: {
+                  $gte: new Date(`${currentYear}-${currentMonth}-01`),
+                  $lte: new Date(`${currentYear}-${currentMonth}-31`),
+                },
               },
             },
-          },
-          { $count: "countMonth" },
-        ]);
+            { $count: "countMonth" },
+          ]);
 
-        res.status(200).json({ success: true, data: waste });
-      } catch (error) {
-        res.status(400).json({ success: false });
+          res.status(200).json({ success: true, data: waste });
+        } catch (error) {
+          res.status(400).json({ success: false });
+        }
+      } else {
+        res.send("Not authenticated");
       }
       break;
   }
