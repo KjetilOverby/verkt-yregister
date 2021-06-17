@@ -18,8 +18,11 @@ const SearchResults = ({
   setGetType,
   setGetSerial,
   setGetNumberOfRetip,
+  createServiceBladeHandler,
+  setOpenRetipModal,
+  openRetipModal,
+  retipUpdateHandler,
 }) => {
-  const [openRetipModal, setOpenRetipModal] = useState(false);
   const [serial, setSerial] = useState();
 
   return (
@@ -37,7 +40,9 @@ const SearchResults = ({
             };
             const openRetipModalHandler = () => {
               setOpenRetipModal(true);
-              setSerial(item.serial);
+              setGetID(item._id);
+              setGetSerial(item.serial);
+              setGetType(item.type);
             };
             return (
               <div className={`${styles.resultContainer} moveBack`}>
@@ -161,6 +166,7 @@ const SearchResults = ({
             cancel={() => setOpenRetipModal(false)}
             serial={serial}
             btnText2="Oppdater"
+            actionBtn={retipUpdateHandler}
           />
         )}
       </div>

@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/wastecount/wastecountThisYear`).then((res) => {
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   // useEffect(() => {
   //   try {
   //     api
@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   // Service Count
   const [servicecountCurrentYear, setServicecountCurrentYear] = useState();
   const [servicecountCurrentYearType, setServicecountCurrentYearType] =
@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/servicecount/serviceCountYearType`).then((res) => {
@@ -83,7 +83,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/servicecount/serviceCountCurrentMonth`).then((res) => {
@@ -92,7 +92,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/servicecount/serviceCountCurrentMonthType`).then((res) => {
@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
 
   // New blades
   const [newbladesCount, setNewbladesCount] = useState();
@@ -117,7 +117,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/newblades/newbladesCurrentYearType`).then((res) => {
@@ -126,7 +126,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/newblades/newbladesCountCurrentMonth`).then((res) => {
@@ -135,7 +135,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   useEffect(() => {
     try {
       api.get(`/api/newblades/newbladesCurrentMonthType`).then((res) => {
@@ -144,7 +144,7 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [update]);
   // SEARCH
   const [searchResult, setSearchResult] = useState();
   const [input, setInput] = useState();

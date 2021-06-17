@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import validUsers from "../utils/users";
+var dateFormat = require("dateformat");
 const api = axios.create({
   baseURL: process.env.api,
 });
@@ -78,6 +79,31 @@ export default function Home({
       .then(function (response) {});
   };
 
+  // Service
+  const [openRetipModal, setOpenRetipModal] = useState(false);
+  const createServiceBladeHandler = () => {
+    api
+      .post(`/api/service/createserviceBlade/?user=${user.sub}`, {
+        type: getType,
+        serial: getSerial,
+        serviceDate: new Date(),
+      })
+      .then(function (response) {});
+  };
+
+  const retipUpdateHandler = () => {
+    api.post(`/api/service/updateretip/?ids=${getID}&user=${user.sub}`, {
+      performer: "Stridsbergs",
+      date: dateFormat(new Date(), "dd.mm.yyyy"),
+    });
+
+    createServiceBladeHandler();
+    setOpenRetipModal(false);
+    setTimeout(() => {
+      setUpdate(Math.random());
+    }, 1000);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -111,6 +137,10 @@ export default function Home({
         setGetType={setGetType}
         setGetSerial={setGetSerial}
         setGetNumberOfRetip={setGetNumberOfRetip}
+        createServiceBladeHandler={createServiceBladeHandler}
+        setOpenRetipModal={setOpenRetipModal}
+        openRetipModal={openRetipModal}
+        retipUpdateHandler={retipUpdateHandler}
       />
     </div>
   );

@@ -17,7 +17,7 @@
 .container {
   width: 100vw;
   min-height: 100vh;
-  background: rgb(16, 19, 36);
+  background: rgb(13, 34, 36);
   position: absolute;
   margin-top: 6rem;
   display: grid;

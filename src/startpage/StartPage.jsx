@@ -35,6 +35,10 @@ function StartPage({
   setGetType,
   setGetSerial,
   setGetNumberOfRetip,
+  createServiceBladeHandler,
+  setOpenRetipModal,
+  openRetipModal,
+  retipUpdateHandler
 }) {
   const { user, isAuthenticated } = useAuth0();
   const [moveBackSearchresult, setMoveBackSearchresult] = useState();
@@ -60,6 +64,10 @@ function StartPage({
             setGetType={setGetType}
             setGetSerial={setGetSerial}
             setGetNumberOfRetip={setGetNumberOfRetip}
+            createServiceBladeHandler={createServiceBladeHandler}
+            setOpenRetipModal={setOpenRetipModal}
+            openRetipModal={openRetipModal}
+            retipUpdateHandler={retipUpdateHandler}
           />
         )}
         <div className={styles.textContainer}>
