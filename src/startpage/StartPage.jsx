@@ -38,7 +38,8 @@ function StartPage({
   createServiceBladeHandler,
   setOpenRetipModal,
   openRetipModal,
-  retipUpdateHandler
+  retipUpdateHandler,
+ 
 }) {
   const { user, isAuthenticated } = useAuth0();
   const [moveBackSearchresult, setMoveBackSearchresult] = useState();

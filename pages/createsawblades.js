@@ -1,14 +1,165 @@
-import React from 'react'
-import HeaderComponent from '../src/components/common/HeaderComponent'
-import styles from '../styles/createsawblades/createsawblades.module.css'
+import React, { useState, useEffect } from "react";
+import styles from "../styles/createsawblades/createsawblades.module.css";
+import Link from "next/link";
+import CreateInputComponent from "../src/components/createsawblades/CreateInputComponent";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+var dateFormat = require("dateformat");
+import { RiDeleteBin5Line } from "react-icons/ri";
+import ModalComponent from "../src/components/common/ModalComponent";
+const api = axios.create({
+  baseURL: process.env.api,
+});
 
+const createsawblades = ({
+  setGetTodayCreatedBladeID,
+  setUpdate,
+  setSelectorValue,
+  setSerialInput,
+  selectorValue,
+  serialInput,
+  newBladesToday,
+  update,
+}) => {
+  const { user, isAuthenticated } = useAuth0();
+  const [openDeleteModalTodayBlade, setOpenDeleteModalTodayBlade] = useState();
+  const [createTodayID, setCreateTodayID] = useState();
+  const [createTodayListID, setCreateTodayListID] = useState();
+  console.log(createTodayListID);
+  console.log(createTodayID);
+  const createNewBladeHandler = () => {
+    api
+      .post(`/api/newblades/createNewBlade/?user=${user.sub}`, {
+        type: selectorValue,
+        serial: serialInput,
+        updated: new Date(),
+      })
+      .then(function (response) {});
 
-const createsawblades = () => {
-    return (
-        <div className={styles.container}>
-            <HeaderComponent />
+    setTimeout(() => {
+      setUpdate(Math.random());
+    }, 1000);
+    setTimeout(() => {
+      createNewBladeListHandler();
+    }, 3000);
+  };
+  const createNewBladeListHandler = () => {
+    api
+      .post(`/api/newblades/createNewBladeList/?user=${user.sub}`, {
+        type: selectorValue,
+        serial: serialInput,
+        updated: new Date(),
+      })
+      .then(function (response) {});
+
+    setTimeout(() => {
+      setUpdate(Math.random());
+    }, 1000);
+  };
+
+  const deleteNewBladesTodayHandler = () => {
+    try {
+      api
+        .delete(
+          `/api/delete/deleteblade/?del=${createTodayID}&user=${user.sub}`
+        )
+
+        .then((res) => {});
+    } catch (error) {
+      console.log(error);
+    }
+    deleteBladeOnList();
+    setOpenDeleteModalTodayBlade(false);
+    setTimeout(() => {
+      setUpdate(Math.random());
+    }, 1000);
+  };
+  const deleteBladeOnList = () => {
+    try {
+      api
+        .delete(
+          `/api/delete/deletebladetoday/?del=${createTodayListID}&user=${user.sub}`
+        )
+        .then((res) => {});
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [serialBladeToday, setSerialBladeToday] = useState();
+
+  const [newBladesOnList, setNewBladesOnList] = useState();
+  useEffect(() => {
+    try {
+      api.get(`/api/newblades/newBladesListToday`).then((res) => {
+        setNewBladesOnList(res.data.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [update]);
+
+  return (
+    <div className={styles.mainContainer}>
+      <div className={styles.leftContainer}>
+        <Link href="/">
+          <button>Tilbake</button>
+        </Link>
+        <div>
+          <CreateInputComponent
+            createNewBladeHandler={createNewBladeHandler}
+            setSelectorValue={setSelectorValue}
+            setSerialInput={setSerialInput}
+          />
         </div>
-    )
-} 
+      </div>
+      <div className={styles.rightContainer}>
+        {newBladesToday &&
+          newBladesToday.data.map((item) => {
+            const openDeleteModalHandler = () => {
+              setOpenDeleteModalTodayBlade(true);
+              setSerialBladeToday(item.serial);
+              setCreateTodayID(item._id);
+            };
 
-export default createsawblades
+            return (
+              <div
+                className={styles.newBladeContainer}
+                onClick={openDeleteModalHandler}
+              >
+                <RiDeleteBin5Line className={styles.deleteButton} />
+                <p className={styles.pTag}>{item.serial}</p>
+                <p className={styles.pTag}>{item.type}</p>
+              </div>
+            );
+          })}
+        {newBladesOnList &&
+          newBladesOnList.map((id) => {
+            const getListTodayID = () => {
+              setCreateTodayListID(id._id);
+            };
+            return (
+              <div onClick={getListTodayID}>
+                <p style={{ color: "white" }}>{id.serial}</p>
+              </div>
+            );
+          })}
+      </div>
+      {openDeleteModalTodayBlade && (
+        <ModalComponent
+          title="Slette"
+          description="Slettingen er permanent og kan ikke angres"
+          color="red"
+          borderColor="red"
+          hoverColor="#d640402b"
+          cancel={() => setOpenDeleteModalTodayBlade(false)}
+          btnText2="Slett"
+          serial={serialBladeToday}
+          actionBtn={deleteNewBladesTodayHandler}
+        />
+      )}
+    </div>
+  );
+};
+
+export default createsawblades;

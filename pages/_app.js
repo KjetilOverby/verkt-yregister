@@ -12,6 +12,11 @@ const api = axios.create({
 });
 
 function MyApp({ Component, pageProps }) {
+
+  const [selectorValue, setSelectorValue] = useState()
+  const [serialInput, setSerialInput] = useState()
+ 
+
   const [getID, setGetID] = useState();
   const [openSearchResults, setOpenSearchResults] = useState(false);
   const [wasteThisYear, setWasteThisYear] = useState();
@@ -165,6 +170,19 @@ function MyApp({ Component, pageProps }) {
     }
   }, [input]);
 
+  const[newBladesToday, setNewBladesToday] = useState()
+console.log(newBladesToday);
+
+  useEffect(() => {
+    try {
+      api.get(`/api/newblades/newBladesToday`).then((res) => {
+        setNewBladesToday(res.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [update]);
+
   return (
     <Auth0Provider
       domain={domain}
@@ -194,6 +212,11 @@ function MyApp({ Component, pageProps }) {
         getID={getID}
         setUpdate={setUpdate}
         update={update}
+        setSelectorValue={setSelectorValue}
+        selectorValue={selectorValue}
+        setSerialInput={setSerialInput}
+        serialInput={serialInput}
+        newBladesToday={newBladesToday}
       />
     </Auth0Provider>
   );

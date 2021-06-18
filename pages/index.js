@@ -32,6 +32,9 @@ export default function Home({
   getID,
   setUpdate,
   update,
+  serialInput,
+  selectorValue
+  
 }) {
   const { user, isAuthenticated } = useAuth0();
   const [wasteCountCurrentMonth, setWasteCountCurrentMonth] = useState();
@@ -39,6 +42,11 @@ export default function Home({
   const [getType, setGetType] = useState();
   const [getSerial, setGetSerial] = useState();
   const [getNumberOfRetip, setGetNumberOfRetip] = useState();
+  const [getTodayCreatedBladeID, setGetTodayCreatedBladeID] = useState()
+  
+  
+
+  
   useEffect(() => {
     try {
       api
@@ -104,6 +112,8 @@ export default function Home({
     }, 1000);
   };
 
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -141,6 +151,8 @@ export default function Home({
         setOpenRetipModal={setOpenRetipModal}
         openRetipModal={openRetipModal}
         retipUpdateHandler={retipUpdateHandler}
+        setGetTodayCreatedBladeID={setGetTodayCreatedBladeID}
+      
       />
     </div>
   );
