@@ -9,7 +9,7 @@ export default async (req, res) => {
     case "DELETE":
       if (req.query.user === "auth0|5f27b78668033f003d618d38") {
         try {
-          const newblade = await NewBlades.deleteOne({ _id: req.query.del });
+          const newblade = await NewBlades.deleteOne({ newid: req.query.del });
           if (!newblade) return res.status(404).send();
           res.send(newblade);
 

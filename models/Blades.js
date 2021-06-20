@@ -30,6 +30,9 @@ const BladesSchema = new mongoose.Schema({
   realRegistDate: {
     type: Date,
   },
+  newid: {
+    type: String,
+  },
 });
 
 module.exports =

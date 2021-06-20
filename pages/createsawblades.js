@@ -10,6 +10,7 @@ import ModalComponent from "../src/components/common/ModalComponent";
 const api = axios.create({
   baseURL: process.env.api,
 });
+import { v4 as uuidv4 } from "uuid";
 
 const createsawblades = ({
   setGetTodayCreatedBladeID,
@@ -24,24 +25,26 @@ const createsawblades = ({
   const { user, isAuthenticated } = useAuth0();
   const [openDeleteModalTodayBlade, setOpenDeleteModalTodayBlade] = useState();
   const [createTodayID, setCreateTodayID] = useState();
+  const [uuid, setUuid] = useState();
   const [createTodayListID, setCreateTodayListID] = useState();
-  console.log(createTodayListID);
-  console.log(createTodayID);
+
+  useEffect(() => {
+    setUuid(uuidv4());
+  }, [update]);
+
   const createNewBladeHandler = () => {
     api
       .post(`/api/newblades/createNewBlade/?user=${user.sub}`, {
         type: selectorValue,
         serial: serialInput,
         updated: new Date(),
+        newid: uuid,
       })
       .then(function (response) {});
-
+    createNewBladeListHandler();
     setTimeout(() => {
       setUpdate(Math.random());
     }, 1000);
-    setTimeout(() => {
-      createNewBladeListHandler();
-    }, 3000);
   };
   const createNewBladeListHandler = () => {
     api
@@ -49,6 +52,7 @@ const createsawblades = ({
         type: selectorValue,
         serial: serialInput,
         updated: new Date(),
+        newid: uuid,
       })
       .then(function (response) {});
 
@@ -78,7 +82,7 @@ const createsawblades = ({
     try {
       api
         .delete(
-          `/api/delete/deletebladetoday/?del=${createTodayListID}&user=${user.sub}`
+          `/api/delete/deletebladetoday/?del=${createTodayID}&user=${user.sub}`
         )
         .then((res) => {});
     } catch (error) {
@@ -119,7 +123,7 @@ const createsawblades = ({
             const openDeleteModalHandler = () => {
               setOpenDeleteModalTodayBlade(true);
               setSerialBladeToday(item.serial);
-              setCreateTodayID(item._id);
+              setCreateTodayID(item.newid);
             };
 
             return (
@@ -139,7 +143,7 @@ const createsawblades = ({
               setCreateTodayListID(id._id);
             };
             return (
-              <div onClick={getListTodayID}>
+              <div className={styles.b} onClick={getListTodayID}>
                 <p style={{ color: "white" }}>{id.serial}</p>
               </div>
             );

@@ -10,6 +10,9 @@ const NewBladesSchema = new mongoose.Schema({
   updated: {
     type: Date,
   },
+  newid: {
+    type: String,
+  },
 });
 
 module.exports =
