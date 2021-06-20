@@ -33,8 +33,7 @@ export default function Home({
   setUpdate,
   update,
   serialInput,
-  selectorValue
-  
+  selectorValue,
 }) {
   const { user, isAuthenticated } = useAuth0();
   const [wasteCountCurrentMonth, setWasteCountCurrentMonth] = useState();
@@ -42,11 +41,8 @@ export default function Home({
   const [getType, setGetType] = useState();
   const [getSerial, setGetSerial] = useState();
   const [getNumberOfRetip, setGetNumberOfRetip] = useState();
-  const [getTodayCreatedBladeID, setGetTodayCreatedBladeID] = useState()
-  
-  
+  const [getTodayCreatedBladeID, setGetTodayCreatedBladeID] = useState();
 
-  
   useEffect(() => {
     try {
       api
@@ -64,7 +60,7 @@ export default function Home({
   const deleteBladeHandler = () => {
     try {
       api
-        .delete(`/api/delete/deleteblade/?del=${getID}&user=${user.sub}`)
+        .delete(`/api/delete/deleteFromDatabase/?del=${getID}&user=${user.sub}`)
         .then((res) => {});
     } catch (error) {
       console.log(error);
@@ -112,8 +108,6 @@ export default function Home({
     }, 1000);
   };
 
-
-
   return (
     <div className={styles.container}>
       <Head>
@@ -152,7 +146,6 @@ export default function Home({
         openRetipModal={openRetipModal}
         retipUpdateHandler={retipUpdateHandler}
         setGetTodayCreatedBladeID={setGetTodayCreatedBladeID}
-      
       />
     </div>
   );

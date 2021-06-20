@@ -6,6 +6,8 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 var dateFormat = require("dateformat");
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { FaArrowLeft } from "react-icons/fa";
+
 import ModalComponent from "../src/components/common/ModalComponent";
 const api = axios.create({
   baseURL: process.env.api,
@@ -107,7 +109,9 @@ const createsawblades = ({
     <div className={styles.mainContainer}>
       <div className={styles.leftContainer}>
         <Link href="/">
-          <button>Tilbake</button>
+          <button className={styles.btn}>
+            <FaArrowLeft className={styles.icon} /> Tilbake
+          </button>
         </Link>
         <div>
           <CreateInputComponent
@@ -118,8 +122,9 @@ const createsawblades = ({
         </div>
       </div>
       <div className={styles.rightContainer}>
-        {newBladesToday &&
-          newBladesToday.data.map((item) => {
+        <h1 className={styles.header}>Legg til nye sagblad</h1>
+        {newBladesOnList &&
+          newBladesOnList.map((item) => {
             const openDeleteModalHandler = () => {
               setOpenDeleteModalTodayBlade(true);
               setSerialBladeToday(item.serial);
@@ -132,12 +137,15 @@ const createsawblades = ({
                 onClick={openDeleteModalHandler}
               >
                 <RiDeleteBin5Line className={styles.deleteButton} />
-                <p className={styles.pTag}>{item.serial}</p>
-                <p className={styles.pTag}>{item.type}</p>
+                <p className={styles.serial}>{item.serial}</p>
+                <p className={styles.type}>{item.type}</p>
+                <p className={styles.pTag}>
+                  {dateFormat(item.updated, "dd.mm.yyyy")}
+                </p>
               </div>
             );
           })}
-        {newBladesOnList &&
+        {/* {newBladesOnList &&
           newBladesOnList.map((id) => {
             const getListTodayID = () => {
               setCreateTodayListID(id._id);
@@ -147,7 +155,7 @@ const createsawblades = ({
                 <p style={{ color: "white" }}>{id.serial}</p>
               </div>
             );
-          })}
+          })} */}
       </div>
       {openDeleteModalTodayBlade && (
         <ModalComponent
