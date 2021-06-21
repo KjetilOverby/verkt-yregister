@@ -1,0 +1,143 @@
+@keyframes move {
+  0% {
+    -webkit-transform: translateY(100vh);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes moveBack {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100vh);
+  }
+}
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  background: #2d283e;
+  position: absolute;
+  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, auto));
+  grid-template-rows: repeat(auto-fit, minmax(5rem, 35rem));
+  grid-gap: 1rem;
+  padding: 1rem;
+  animation-duration: 1.5s;
+  animation-name: move;
+}
+.retipText {
+  font-style: italic;
+  color: #d1d7e0;
+}
+.commentText {
+  font-style: italic;
+  color: #d1d7e0;
+  width: 11rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+.iconContainer:hover {
+  cursor: pointer;
+}
+
+.serialDotContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  color: #802bb1;
+}
+.registDate {
+  color: #564f6f;
+  font-weight: 100;
+}
+.resultContainer {
+  border: #d1d7e0 solid 2px;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+.retip {
+  color: rgb(165, 165, 165);
+  margin: 1rem 0;
+  font-weight: 100;
+}
+.retipContainer {
+  color: rgb(204, 204, 204);
+  display: flex;
+  justify-content: space-between;
+  background: #4c495d;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.type {
+  color: #d1d7e0;
+  font-weight: 100;
+  font-style: italic;
+}
+.btnRetip {
+  border: 1px solid rgb(108, 157, 231);
+  background: transparent;
+  color: rgb(108, 157, 231);
+  padding: 0.5rem;
+  border-radius: 10px;
+  width: 6rem;
+  margin-right: 1rem;
+  transition: 0.5s;
+}
+.deleteBtnContainer {
+  border: 1px solid red;
+  transition: 0.5s;
+  background: rgba(255, 0, 0, 0.192);
+  color: red;
+}
+.deleteBtnContainer:hover {
+  background: rgba(255, 0, 0, 0.678);
+  color: white;
+}
+.commentBtnContainer {
+  border: 1px solid rgb(92, 235, 64);
+  transition: 0.5s;
+  background: rgba(0, 255, 13, 0.192);
+  color: rgb(92, 235, 64);
+}
+.commentBtnContainer:hover {
+  background: rgb(67, 161, 48);
+  color: white;
+}
+.retipBtnContainer {
+  border: 1px solid rgb(44, 133, 235);
+  transition: 0.5s;
+  background: rgba(0, 102, 255, 0.192);
+  color: rgb(44, 133, 235);
+}
+.retipBtnContainer:hover {
+  background: rgba(0, 60, 255, 0.678);
+  color: white;
+}
+
+.btnContainer {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    margin-top: 10rem;
+  }
+}

@@ -1,0 +1,93 @@
+.mainContainer {
+  background: #2d283e;
+  min-height: 100vh;
+  padding: 5rem;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-template-areas: "left right";
+  min-width: 100vw;
+}
+.header {
+  color: #802bb1;
+  margin-bottom: 2rem;
+}
+.btn {
+  border: 1px solid #d1d7e0;
+  padding: 0.5rem;
+  width: 12.5rem;
+  background-color: transparent;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+  color: #d1d7e0;
+  transition: 0.5s;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: #802bb1;
+}
+.icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+.leftContainer {
+  grid-area: left;
+}
+.rightContainer {
+  grid-area: right;
+}
+.pTag {
+  color: 564f6f;
+  min-width: 6rem;
+  color: rgb(28, 53, 121);
+}
+.inputText {
+  font-style: italic;
+  color: #d1d7e0;
+}
+.serial {
+  width: 5rem;
+  color: rgb(231, 214, 189);
+}
+.type {
+  width: 17rem;
+  color: 564f6f;
+  color: rgb(44, 71, 52);
+}
+.newBladeContainer {
+  background-color: #7a7d99;
+  display: flex;
+  width: 27rem;
+  margin: 0.5rem 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  align-items: center;
+}
+.deleteButton {
+  color: rgb(233, 124, 124);
+  cursor: pointer;
+  width: 2rem;
+}
+.typeCountContainer {
+  display: flex;
+  flex-direction: row;
+}
+.count {
+  margin-right: 1rem;
+  color: #d1d7e0;
+}
+.typeCountHeader {
+  color: #d1d7e0;
+  margin: 1rem;
+}
+@media screen and (max-width: 850px) {
+  .mainContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "left left"
+      "right right";
+    padding: 1rem;
+    place-items: center;
+  }
+}

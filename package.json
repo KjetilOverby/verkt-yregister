@@ -1,0 +1,22 @@
+{
+  "name": "sliperisagbladregister",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@auth0/auth0-react": "^1.5.0",
+    "@auth0/nextjs-auth0": "^1.3.1",
+    "axios": "^0.21.1",
+    "dateformat": "^4.5.1",
+    "mongoose": "^5.12.12",
+    "next": "10.2.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "uuid": "^8.3.2"
+  }
+}
