@@ -74,9 +74,9 @@ function StartPage({
         <div className={styles.textContainer}>
           <h1 className={styles.headerText}>Sagbladregister</h1>
           <p className={styles.subText}>Sliperi Moelven Våler • MKV - VS66</p>
-          <Link href="https://moelvensagbladregister.vercel.app/homepage">
+          <a target='_blank' href="https://moelvensagbladregister.vercel.app/homepage">
             <button className={styles.btn}>Oversikt</button>
-          </Link>
+          </a>
         </div>
         <div className={styles.cardContainer}>
           <StartPageCards

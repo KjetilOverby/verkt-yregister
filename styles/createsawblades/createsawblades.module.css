@@ -45,6 +45,11 @@
   font-style: italic;
   color: #d1d7e0;
 }
+.bladeviewHeader{
+  margin: 1rem 0;
+  color: #a556d3;
+  font-weight: bold;
+}
 .serial {
   width: 5rem;
   color: rgb(231, 214, 189);

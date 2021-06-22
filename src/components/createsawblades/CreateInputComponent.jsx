@@ -15,6 +15,7 @@ const CreateInputComponent = ({
         id="sagblad"
         className={styles.select}
       >
+        <option value="">Velg sagblad</option>
         <option value="Kanefusa 2.2-3.6">Kanefusa 2.2-3.6</option>
         <option value="Kanefusa 2.4-3.8">Kanefusa 2.4-3.8</option>
         <option value="Kanefusa 2.6-4.0">Kanefusa 2.6-4.0</option>

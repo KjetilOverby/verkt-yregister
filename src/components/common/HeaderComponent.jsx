@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../auth/LoginButton";
 import Logout from "../auth/Logout";
 import validUsers from "../../../utils/users";
-import Link from 'next/link'
+import Link from "next/link";
 
 const HeaderComponent = ({
   input,
@@ -14,8 +14,7 @@ const HeaderComponent = ({
   setMoveBackSearchresult,
 }) => {
   const { user, isAuthenticated } = useAuth0();
-  const [test, setTest] = useState();
-  console.log(test);
+
   const getSearchHandler = (e) => {
     setInput(e.target.value);
   };
@@ -52,9 +51,8 @@ const HeaderComponent = ({
                 Lukk søkeresultater
               </p>
             )}
-            <Link href='/createsawblades'>
-            
-            <p className={styles.tab}>Legg til sagblad</p>
+            <Link href="/createsawblades">
+              <p className={styles.tab}>Legg til sagblad</p>
             </Link>
           </div>
         )}

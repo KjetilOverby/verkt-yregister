@@ -12,17 +12,14 @@ const api = axios.create({
 });
 
 function MyApp({ Component, pageProps }) {
-
-  const [selectorValue, setSelectorValue] = useState()
-  const [serialInput, setSerialInput] = useState()
- 
+  const [selectorValue, setSelectorValue] = useState();
+  const [serialInput, setSerialInput] = useState();
 
   const [getID, setGetID] = useState();
   const [openSearchResults, setOpenSearchResults] = useState(false);
   const [wasteThisYear, setWasteThisYear] = useState();
   const [wasteCountTypeThisYear, setWasteCountTypeThisYear] = useState();
   const [update, setUpdate] = useState();
-  // const [wasteCountCurrentMonth, setWasteCountCurrentMonth] = useState();
   const [wasteCountCurrentMonthType, setWasteCountCurrentMonthType] =
     useState();
 
@@ -44,17 +41,7 @@ function MyApp({ Component, pageProps }) {
       console.log(error);
     }
   }, [update]);
-  // useEffect(() => {
-  //   try {
-  //     api
-  //       .get(`/api/wastecount/wastecountCurrentMonth?test=test`)
-  //       .then((res) => {
-  //         setWasteCountCurrentMonth(res.data);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
+
   useEffect(() => {
     try {
       api.get(`/api/wastecount/wasteCountCurrentMonthType`).then((res) => {
@@ -153,7 +140,7 @@ function MyApp({ Component, pageProps }) {
   // SEARCH
   const [searchResult, setSearchResult] = useState();
   const [input, setInput] = useState();
-  console.log(searchResult);
+
   useEffect(() => {
     try {
       api.get(`/api/search/querysearch?userquery=${input}`).then((res) => {
@@ -170,8 +157,8 @@ function MyApp({ Component, pageProps }) {
     }
   }, [input]);
 
-  const[newBladesToday, setNewBladesToday] = useState()
-console.log(newBladesToday);
+  const [newBladesToday, setNewBladesToday] = useState();
+  console.log(newBladesToday);
 
   useEffect(() => {
     try {
@@ -183,7 +170,7 @@ console.log(newBladesToday);
     }
   }, [update]);
 
-  const [addedTodayCount, setAddedTodayCount] = useState()
+  const [addedTodayCount, setAddedTodayCount] = useState();
   useEffect(() => {
     try {
       api.get(`/api/newblades/newBladeListCountToday`).then((res) => {
@@ -193,7 +180,17 @@ console.log(newBladesToday);
       console.log(error);
     }
   }, [update]);
-  console.log(newBladesCurrentMonthType);
+
+  const [newBladesTodayType, setNewBladesTodayType] = useState();
+  useEffect(() => {
+    try {
+      api.get(`/api/newblades/newBladeTodayType`).then((res) => {
+        setNewBladesTodayType(res.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [update]);
 
   return (
     <Auth0Provider
@@ -205,7 +202,6 @@ console.log(newBladesToday);
         {...pageProps}
         wasteCountTypeThisYear={wasteCountTypeThisYear}
         wasteThisYear={wasteThisYear}
-        //wasteCountCurrentMonth={wasteCountCurrentMonth}
         wasteCountCurrentMonthType={wasteCountCurrentMonthType}
         servicecountCurrentYear={servicecountCurrentYear}
         servicecountCurrentYearType={servicecountCurrentYearType}
@@ -230,6 +226,7 @@ console.log(newBladesToday);
         serialInput={serialInput}
         newBladesToday={newBladesToday}
         addedTodayCount={addedTodayCount}
+        newBladesTodayType={newBladesTodayType}
       />
     </Auth0Provider>
   );

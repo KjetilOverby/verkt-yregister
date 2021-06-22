@@ -53,11 +53,12 @@ export default function Home({
     } catch (error) {
       console.log(error);
     }
-  }, [user]);
+  }, [user, update]);
 
   // DELETE
 
   const deleteBladeHandler = () => {
+    createDeletedBladeHandler();
     try {
       api
         .delete(`/api/delete/deleteFromDatabase/?del=${getID}&user=${user.sub}`)
@@ -65,8 +66,8 @@ export default function Home({
     } catch (error) {
       console.log(error);
     }
-    createDeletedBladeHandler();
     setOpenDeleteModal(false);
+
     setTimeout(() => {
       setUpdate(Math.random());
     }, 1000);

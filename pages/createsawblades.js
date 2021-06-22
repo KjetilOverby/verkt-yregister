@@ -22,7 +22,8 @@ const createsawblades = ({
   serialInput,
   update,
   addedTodayCount,
-  newBladesCurrentMonthType
+  newBladesCurrentMonthType,
+  newBladesTodayType
 }) => {
   const { user, isAuthenticated } = useAuth0();
   const [openDeleteModalTodayBlade, setOpenDeleteModalTodayBlade] = useState();
@@ -35,7 +36,11 @@ const createsawblades = ({
   }, [update]);
 
   const createNewBladeHandler = () => {
-    api
+    if (serialInput === '' || serialInput === undefined || selectorValue === '' || selectorValue === undefined) {
+     alert('Du må fylle ut bladtype og serienummer!')
+    
+    } else {
+      api
       .post(`/api/newblades/createNewBlade/?user=${user.sub}`, {
         type: selectorValue,
         serial: serialInput,
@@ -47,7 +52,9 @@ const createsawblades = ({
     setTimeout(() => {
       setUpdate(Math.random());
     }, 1000);
+    }
   };
+ 
   const createNewBladeListHandler = () => {
     api
       .post(`/api/newblades/createNewBladeList/?user=${user.sub}`, {
@@ -124,8 +131,8 @@ const createsawblades = ({
           />
         </div>
         
-          <p className={styles.inputText}>Lagt til denne måneden: {  newBladesOnList && newBladesOnList.length}</p>
-          <p className={styles.inputText}>Lagt til i dag: {addedTodayCount && addedTodayCount.data.map(item => item.countDay)}</p>
+          <p className={styles.bladeviewHeader}>Lagt til denne måneden: {  newBladesOnList && newBladesOnList.length}</p>
+         
 
           <h4 className={styles.typeCountHeader}>Bladtyper denne måneden:</h4>
           <div >
@@ -133,8 +140,11 @@ const createsawblades = ({
           
           
           </div>
-     
-        
+
+          
+          <p className={styles.bladeviewHeader}>Lagt til i dag: {addedTodayCount && addedTodayCount.data.map(item => item.countDay)}</p>
+          <h4 className={styles.typeCountHeader}>Bladtyper i dag:</h4>
+          {newBladesTodayType && newBladesTodayType.data.map(item => <div className={styles.typeCountContainer}> <p className={styles.count}>{item.typeCount}</p><p className={styles.inputText}>{item._id.type}</p></div>)}
         
       </div>
       <div className={styles.rightContainer}>
