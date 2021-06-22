@@ -1,5 +1,8 @@
 .mainContainer {
-  background: #2d283e;
+  background: linear-gradient(#2d283ee1, #2d283e),
+    url("https://images.unsplash.com/photo-1613832187362-30fbc695074d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80");
+  background-size: cover;
+  repeat: no-repeat;
   min-height: 100vh;
   padding: 5rem;
   display: grid;
@@ -45,7 +48,7 @@
   font-style: italic;
   color: #d1d7e0;
 }
-.bladeviewHeader{
+.bladeviewHeader {
   margin: 1rem 0;
   color: #a556d3;
   font-weight: bold;
