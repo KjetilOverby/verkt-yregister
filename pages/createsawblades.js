@@ -35,7 +35,7 @@ const createsawblades = ({
     setUuid(uuidv4());
   }, [update]);
 
-  const createNewBladeHandler = () => {
+  const createNewBladeHandler = (e) => {
     if (serialInput === '' || serialInput === undefined || selectorValue === '' || selectorValue === undefined) {
      alert('Du må fylle ut bladtype og serienummer!')
     
@@ -54,6 +54,13 @@ const createsawblades = ({
     }, 1000);
     }
   };
+  const onSubmit = (e) => {
+
+    if (e.code === 'Enter') {   
+
+    createNewBladeHandler()
+        }
+  }
  
   const createNewBladeListHandler = () => {
     api
@@ -128,6 +135,7 @@ const createsawblades = ({
             createNewBladeHandler={createNewBladeHandler}
             setSelectorValue={setSelectorValue}
             setSerialInput={setSerialInput}
+            onSubmit={onSubmit}
           />
         </div>
         

@@ -39,9 +39,11 @@
 }
 @media screen and (max-width: 1000px) {
   .header {
-    justify-content: flex-start;
-    align-items: flex-end;
+   
+    align-items: center;
     padding: 0;
+    height: 10rem;
+    padding-right: 3rem;
   }
   .logoMenuContainer {
     flex-direction: column;

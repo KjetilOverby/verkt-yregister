@@ -1,19 +1,24 @@
 import React from "react";
 import styles from "../../../styles/createsawblades/createInputComponent.module.css";
 import { BiAddToQueue } from "react-icons/bi";
+import createsawblades from "../../../pages/createsawblades";
 
 const CreateInputComponent = ({
   setSelectorValue,
   setSerialInput,
   createNewBladeHandler,
+  onSubmit
 }) => {
   return (
     <div className={styles.container}>
+   
       <select
         onChange={(e) => setSelectorValue(e.target.value)}
         name="sagblad"
         id="sagblad"
         className={styles.select}
+       
+        
       >
         <option value="">Velg sagblad</option>
         <option value="Kanefusa 2.2-3.6">Kanefusa 2.2-3.6</option>
@@ -32,10 +37,12 @@ const CreateInputComponent = ({
         <option value="Nessjø VS-66 venstre">Nessjø VS-66 venstre</option>
         <option value="Nessjø VS-66 høyre">Nessjø VS-66 høyre</option>
       </select>
+ 
       <input
         onChange={(e) => setSerialInput(e.target.value)}
         placeholder="Serienummer"
         className={styles.input}
+        onKeyPress={onSubmit}
       />
       <button className={styles.btn} onClick={createNewBladeHandler}>
         <BiAddToQueue className={styles.icon} />
