@@ -158,7 +158,6 @@ function MyApp({ Component, pageProps }) {
   }, [input]);
 
   const [newBladesToday, setNewBladesToday] = useState();
-  console.log(newBladesToday);
 
   useEffect(() => {
     try {

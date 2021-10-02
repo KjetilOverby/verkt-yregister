@@ -68,7 +68,7 @@ const SearchResults = ({
                   {item.registDate || dateFormat(item.updated, "dd.mm.yyyy")}
                 </p>
                 <h2 className={styles.retip}>Omloddinger</h2>
-                <hr />
+                <hr className={styles.hr} />
                 <div className={styles.retipContainer}>
                   <div style={{ display: "inline-block" }}>
                     {item.performer == "" ? (
@@ -92,7 +92,7 @@ const SearchResults = ({
                   </div>
                 </div>
                 <h2 className={styles.retip}>Kommentarer</h2>
-                <hr />
+                <hr className={styles.hr} />
 
                 <div className={styles.retipContainer}>
                   <div style={{ display: "inline-block" }}>

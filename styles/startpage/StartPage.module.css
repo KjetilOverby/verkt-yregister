@@ -8,7 +8,8 @@
     "content"
     "footer";
 
-  background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+  background: url("https://images.unsplash.com/photo-1546984464-b4ff3aee5bca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
 }
 .container {
   display: grid;
@@ -21,14 +22,15 @@
   overflow: hidden;
   grid-column: 1/-1;
   grid-row: 1/6;
-  background: linear-gradient(20deg, #09203f 30%, rgba(0, 0, 0, 0.1)),
-    url("https://images.unsplash.com/photo-1588917144020-101e8e744324?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background: linear-gradient(20deg, #0e1835a6 30%, rgba(0, 0, 0, 0.1)),
+    url("https://images.unsplash.com/photo-1585750703060-9f3df7185276?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80");
   background-size: cover;
   background-position: center;
+  box-shadow: 30px 20px 20px black;
 }
 .cardContainer {
   grid-column: 3/ 11;
-  grid-row: 5/10;
+  grid-row: 4/6;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   justify-items: center;

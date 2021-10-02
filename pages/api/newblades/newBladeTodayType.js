@@ -5,7 +5,7 @@ dbConnect();
 
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1;
-const currentDay = new Date().getDay()
+const currentDay = new Date().getDate();
 
 export default async (req, res) => {
   const { method } = req;

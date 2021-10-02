@@ -1,6 +1,5 @@
 .mainContainer {
-  background: linear-gradient(#2d283ee1, #2d283e),
-    url("https://images.unsplash.com/photo-1613832187362-30fbc695074d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80");
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   background-size: cover;
   repeat: no-repeat;
   min-height: 100vh;
@@ -11,22 +10,22 @@
   min-width: 100vw;
 }
 .header {
-  color: #802bb1;
+  color: #535353;
   margin-bottom: 2rem;
 }
 .btn {
-  border: 1px solid #d1d7e0;
+  border: 1px solid #5a5a5a;
   padding: 0.5rem;
   width: 12.5rem;
   background-color: transparent;
   border-radius: 5px;
   margin: 0.5rem 0;
-  color: #d1d7e0;
+  color: #3f3f3f;
   transition: 0.5s;
 }
 .btn:hover {
   cursor: pointer;
-  background-color: #802bb1;
+  background-color: #e2e2e2;
 }
 .icon {
   vertical-align: middle;
@@ -46,11 +45,11 @@
 }
 .inputText {
   font-style: italic;
-  color: #d1d7e0;
+  color: #696969;
 }
 .bladeviewHeader {
   margin: 1rem 0;
-  color: #a556d3;
+  color: #4d4d4d;
   font-weight: bold;
 }
 .serial {
@@ -60,16 +59,21 @@
 .type {
   width: 17rem;
   color: 564f6f;
-  color: rgb(44, 71, 52);
+  color: rgb(23, 27, 63);
 }
 .newBladeContainer {
-  background-color: #7a7d99;
+  background-color: #7372b3;
   display: flex;
   width: 27rem;
   margin: 0.5rem 0;
   padding: 0.3rem 0.5rem;
   border-radius: 5px;
   align-items: center;
+  transition: background-color 0.5s;
+}
+.newBladeContainer:hover {
+  cursor: pointer;
+  background-color: #3b5ebe;
 }
 .deleteButton {
   color: rgb(233, 124, 124);
@@ -82,10 +86,10 @@
 }
 .count {
   margin-right: 1rem;
-  color: #d1d7e0;
+  color: #535353;
 }
 .typeCountHeader {
-  color: #d1d7e0;
+  color: #5c5c5c;
   margin: 1rem;
 }
 @media screen and (max-width: 850px) {

@@ -42,7 +42,7 @@ export default function Home({
   const [getSerial, setGetSerial] = useState();
   const [getNumberOfRetip, setGetNumberOfRetip] = useState();
   const [getTodayCreatedBladeID, setGetTodayCreatedBladeID] = useState();
-
+  console.log(user);
   useEffect(() => {
     try {
       api
@@ -62,15 +62,15 @@ export default function Home({
     try {
       api
         .delete(`/api/delete/deleteFromDatabase/?del=${getID}&user=${user.sub}`)
-        .then((res) => {});
+        .then((res) => {
+          if (res.status === 200) {
+            setUpdate(Math.random());
+            setOpenDeleteModal(false);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
-    setOpenDeleteModal(false);
-
-    setTimeout(() => {
-      setUpdate(Math.random());
-    }, 1000);
   };
 
   const createDeletedBladeHandler = () => {
@@ -97,16 +97,18 @@ export default function Home({
   };
 
   const retipUpdateHandler = () => {
-    api.post(`/api/service/updateretip/?ids=${getID}&user=${user.sub}`, {
-      performer: "Stridsbergs",
-      date: dateFormat(new Date(), "dd.mm.yyyy"),
-    });
-
-    createServiceBladeHandler();
-    setOpenRetipModal(false);
-    setTimeout(() => {
-      setUpdate(Math.random());
-    }, 1000);
+    api
+      .post(`/api/service/updateretip/?ids=${getID}&user=${user.sub}`, {
+        performer: "Stridsbergs",
+        date: dateFormat(new Date(), "dd.mm.yyyy"),
+      })
+      .then(function (res) {
+        if (res.status === 200) {
+          setUpdate(Math.random());
+          setOpenRetipModal(false);
+          createServiceBladeHandler();
+        }
+      });
   };
 
   return (

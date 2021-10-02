@@ -15,10 +15,25 @@ a {
   box-sizing: border-box;
 }
 .tab {
-  color: white;
+  color: rgb(170, 170, 170);
 }
 .tab:hover {
   cursor: pointer;
+}
+.button {
+  border: 1px solid rgb(255, 255, 255);
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: rgb(102, 102, 102);
 }
 h1,
 h2,

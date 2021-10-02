@@ -1,23 +1,7 @@
-@keyframes move {
-  0% {
-    -webkit-transform: translateY(100vh);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-  }
-}
-@keyframes moveBack {
-  0% {
-    -webkit-transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100vh);
-  }
-}
 .container {
   width: 100vw;
   min-height: 100vh;
-  background: #2d283e;
+  background: #07011a;
   position: absolute;
   margin-top: 6rem;
   display: grid;
@@ -25,8 +9,6 @@
   grid-template-rows: repeat(auto-fit, minmax(5rem, 35rem));
   grid-gap: 1rem;
   padding: 1rem;
-  animation-duration: 1.5s;
-  animation-name: move;
 }
 .retipText {
   font-style: italic;
@@ -60,14 +42,17 @@
 }
 
 .header {
-  color: #802bb1;
+  color: #4892f3;
+}
+.hr {
+  border-color: #3f587e;
 }
 .registDate {
-  color: #564f6f;
+  color: #86858a;
   font-weight: 100;
 }
 .resultContainer {
-  border: #d1d7e0 solid 2px;
+  border: #3f587e solid 2px;
   padding: 1.5rem;
   border-radius: 10px;
 }
@@ -80,7 +65,7 @@
   color: rgb(204, 204, 204);
   display: flex;
   justify-content: space-between;
-  background: #4c495d;
+  background: #0f1042;
   padding: 0.5rem;
   border-radius: 10px;
 }
